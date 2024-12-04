@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ғылыми Терминдер Сөздігі</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007BFF;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ғылыми Терминдер Сөздігі</h1>
+    </header>
+
+    <section>
+        <h2>Терминдерді Іздеу</h2>
+        <input type="text" id="search" placeholder="Терминді енгізіңіз...">
+        <ul id="terms">
+            <li>Деректер (Data)</li>
+            <li>Модель (Model)</li>
+            <li>Алгоритм (Algorithm)</li>
+        </ul>
+        <a href="index.html">← Басты бетке қайту</a>
+    </section>
+
+    <script>
+        // Получаем элементы поиска и списка
+        const searchInput = document.getElementById("search");
+        const termsList = document.getElementById("terms");
+        const terms = termsList.getElementsByTagName("li");
+
+        // Добавляем обработчик событий на поле ввода
+        searchInput.addEventListener("input", function () {
+            const filter = searchInput.value.toLowerCase();
+
+            // Проходимся по каждому элементу списка
+            for (let i = 0; i < terms.length; i++) {
+                const termText = terms[i].textContent.toLowerCase();
+                
+                // Скрываем или показываем элементы в зависимости от фильтра
+                if (termText.includes(filter)) {
+                    terms[i].classList.remove("hidden");
+                } else {
+                    terms[i].classList.add("hidden");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
